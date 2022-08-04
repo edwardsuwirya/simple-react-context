@@ -17,7 +17,6 @@ import {Component} from "react";
 import MainContextProvider from "./context/MainContextProvider";
 import {DepsProvider} from "./context/DependencyContextProvider";
 import AuthenticationService from "./services/AuthenticationService";
-import CombinedContextProvider from "./features/login/CombinedContext";
 
 
 class App extends Component {
@@ -27,9 +26,7 @@ class App extends Component {
                 authenticationService: AuthenticationService(),
             }}>
                 <MainContextProvider>
-                    <CombinedContextProvider>
-                        <LoginView/>
-                    </CombinedContextProvider>
+                    <LoginView/>
                     <ProfileView/>
                 </MainContextProvider>
             </DepsProvider>
