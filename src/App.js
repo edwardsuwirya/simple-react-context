@@ -15,15 +15,21 @@ import LoginView from "./features/login/loginView";
 import ProfileView from "./features/profile/profileView";
 import {Component} from "react";
 import MainContextProvider from "./context/MainContextProvider";
+import {DepsProvider} from "./context/DependencyContextProvider";
+import AuthenticationService from "./services/AuthenticationService";
 
 
 class App extends Component {
     render() {
         return (
-            <MainContextProvider>
-                <LoginView/>
-                <ProfileView/>
-            </MainContextProvider>
+            <DepsProvider services={{
+                authenticationService: AuthenticationService(),
+            }}>
+                <MainContextProvider>
+                    <LoginView/>
+                    <ProfileView/>
+                </MainContextProvider>
+            </DepsProvider>
         )
     }
 }
